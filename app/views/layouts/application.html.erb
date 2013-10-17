@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <div class="page-header">
+      <h1>Product Creation Wizard</h1>
+      <p class="lead">More details available at <a href="https://github.com/ericroberts/wizard-object">https://github.com/ericroberts/wizard-object</a></p>
+    </div>
+    <%= yield %>
+  </div>
 </body>
 </html>

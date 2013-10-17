@@ -13,7 +13,7 @@ class ProductWizardController < ApplicationController
   end
 
   def show
-    @pick = WizardProduct.new(session[:product_wizard][:product])
+    @product = WizardProduct.new(session[:product_wizard].try(:[], [:product]))
     @step = step
 
     render_wizard
@@ -29,6 +29,10 @@ class ProductWizardController < ApplicationController
     @product.validations = validations
 
     render_wizard @product
+  end
+
+  def finish_wizard_path
+    products_path
   end
 
   def validations

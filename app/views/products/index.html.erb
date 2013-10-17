@@ -1,0 +1,22 @@
+<h2>Products</h2>
+<p><%= link_to 'Add a New Product', new_product_wizard_path, class: 'btn' %></p>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product %></td>
+        <td><%= product.price %></td>
+        <td><%= product.category %></td>
+        <td><%= link_to "View", product %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

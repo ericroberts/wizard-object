@@ -21,9 +21,9 @@ class WizardProduct < Product
       if step == steps.last
         obj = @@parent.new(accessible_attributes)
         
-        session.delete("#{underscored_name}_builder".to_sym) if obj.save
+        session.delete("#{underscored_name}_wizard".to_sym) if obj.save
       else
-        session["#{underscored_name}_builder".to_sym][underscored_name.to_sym] = accessible_attributes
+        session["#{underscored_name}_wizard".to_sym][underscored_name.to_sym] = accessible_attributes
       end
     end
   end
