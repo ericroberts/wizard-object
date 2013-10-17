@@ -121,7 +121,7 @@ A key part of this is rewriting the save method. Here, we check if the object is
 
 There are a couple limitations with the way I'm currently doing things.
 
-1. <span>All attributes must be mass-assignable. This is how I can do `@@parent.new(accessible_attributes)`. There are ways around this, but I haven't had time to update the code yet.</span>
+1. <span>All attributes must be mass-assignable. This is how I can do `@@parent.new(accessible_attributes)`. There are ways around this, but it makes sense, since you are assigning these attributes through the interface. I'm working on an updated version for Rails 4 that will use strong params instead.</span>
 2. <span>Assocations don't work at all. If you accept nested attributes for things, this just flat out won't work. It is fairly easy to make it work on a case by case basis, but I haven't figured out a generalized solution yet. I'm happy to hear suggestions!</span>
 
 If you have ways you think these limitations could be overcome, or you think I could do certain things better, feel free to get in touch with [me on Twitter](http://twitter.com/eroberts).
@@ -166,6 +166,10 @@ By the way, here's the full controller with all the changes we made:
         @product.validations = validations
 
         render_wizard @product
+      end
+
+      def finish_wizard_path
+        products_path
       end
 
       def validations
