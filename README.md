@@ -8,8 +8,11 @@ I decided to start tackling requirement 2 first, since I had an idea how to go a
 First, let's create our product class:
 
     class Product < ActiveRecord::Base
-      validates :name, :price, :category, :presence => true
+      attr_accessible :category, :name, :price
+
+      validates_presence_of :category, :name, :price
     end
+
 
 Next, let's begin creating our controller. Starting from what Wicked Wizard tells us to do, we'd have something like this:
 
